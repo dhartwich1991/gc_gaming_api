@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
 	def index
-		render json: {message: 'Ressource not found'}
+		render json: {message: 'Hello World'}
 	end
 end
