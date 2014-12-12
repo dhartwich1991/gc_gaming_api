@@ -1,12 +1,12 @@
 module Api
 	module V1
 		class UsersController < ApplicationController
-			def index
+			def index(name, password)
 				render json: {message: 'UsersController'}
 				db = SQLite3::Database.open "user.db"
 				db.execute "CREATE TABLE IF NOT EXISTS User(Id INTEGER PRIMARY KEY AUTOINCREMENT, 
         Name TEXT, Password TEXT)"
-				db.execute "INSERT INTO User (Name,Password) VALUES('Audi','A4')"
+				db.execute "INSERT INTO User (Name,Password) VALUES(#{:name},#{:password})"
 				rescue SQLite3::Exception => e 
     
     				puts "Exception occurred"
