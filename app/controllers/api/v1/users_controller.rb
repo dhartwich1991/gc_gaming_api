@@ -8,10 +8,10 @@
 						Name TEXT, Password TEXT)"
 	db.execute "INSERT INTO User (Name,Password) VALUES(#{:name},#{:password})"
 rescue SQLite3::Exception => e 
-	
+
 	puts "Exception occurred"
 	puts e
-	
+
 ensure
 	db.close if db
 end
@@ -22,18 +22,18 @@ def register
 	db.execute "CREATE TABLE IF NOT EXISTS User(Id INTEGER PRIMARY KEY AUTOINCREMENT, 
 		Name TEXT, Password TEXT)"
 	db.execute "INSERT INTO User (Name,Password) VALUES(#{name},#{password})"
-	render json {message: 'sucess'}
+	render json: {message: 'sucess'}
 rescue SQLite3::Exception => e 
-	
-	render json {message: 'error'}
-	
+
+	render json: {message: 'error'}
+
 ensure
 	db.close if db
 end
 def login
 end
 def list_friends(user_id)
-	
+
 end
 end
 end
