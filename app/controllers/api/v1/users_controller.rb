@@ -18,10 +18,11 @@ end
 def register
 	name = params[:username]
 	password = params[:password]
+
 	db = SQLite3::Database.open "user.db"
 	db.execute "CREATE TABLE IF NOT EXISTS User(Id INTEGER PRIMARY KEY AUTOINCREMENT, 
 		Name TEXT, Password TEXT)"
-	db.execute "INSERT INTO User (Name,Password) VALUES(#{@name},#{@password})"
+	db.execute "INSERT INTO User (Name,Password) VALUES(@name,@password);"
 	render json: {message: 'sucess'}
 rescue SQLite3::Exception => e 
 
