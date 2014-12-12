@@ -1,9 +1,5 @@
-module Api
-  module V1
-    class UserController < ApplicationController
+class UsersController < ApplicationController
 	def index
-	  render json: {message: 'Ressource not found'}
+		render json: {message: 'Ressource not found'}
 	end
-    end
-  end
 end
