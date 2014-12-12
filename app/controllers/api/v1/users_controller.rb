@@ -26,6 +26,7 @@ def register
 rescue SQLite3::Exception => e 
 
 	render json: {message: 'error', exception: e}
+	puts e
 
 ensure
 	db.close if db
