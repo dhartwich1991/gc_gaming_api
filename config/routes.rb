@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
 	    resources :users do
         collection do
-          get :register
+          post 'register'
         end
       end
       resources :raids
