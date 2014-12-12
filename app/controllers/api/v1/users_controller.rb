@@ -15,11 +15,13 @@ module Api
 				ensure
     				db.close if db
 			end
-			def register(name, password)
+			def register
+				name = params[:username]
+				password = params[:password]
 				db = SQLite3::Database.open "user.db"
 				db.execute "CREATE TABLE IF NOT EXISTS User(Id INTEGER PRIMARY KEY AUTOINCREMENT, 
         Name TEXT, Password TEXT)"
-				db.execute "INSERT INTO User (Name,Password) VALUES(#{:name},#{:password})"
+				db.execute "INSERT INTO User (Name,Password) VALUES(#{name},#{password})"
 				rescue SQLite3::Exception => e 
     
     				puts "Exception occurred"
