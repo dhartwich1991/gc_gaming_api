@@ -24,8 +24,8 @@ def register
 	db.execute "INSERT INTO User (Name,Password) VALUES(#{name},#{password})"
 	render json: {message: 'sucess'}
 rescue SQLite3::Exception => e 
-
-	render json: {message: 'error', exception: e}
+	puts 'error'
+	puts e
 
 ensure
 	db.close if db
