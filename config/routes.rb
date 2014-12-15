@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 	    resources :users do
         collection do
           post 'register'
+          post 'login'
         end
       end
       resources :raids
