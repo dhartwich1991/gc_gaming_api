@@ -1,24 +1,17 @@
 	module Api
 		module V1
 			class UsersController < ApplicationController
-				def index
-					render json: {message: 'UsersController'}
-					db = SQLite3::Database.open "user.db"
-					db.execute "CREATE TABLE IF NOT EXISTS User(Id INTEGER PRIMARY KEY AUTOINCREMENT, 
-						Name TEXT, Password TEXT)"
-	db.execute "INSERT INTO User (Name,Password) VALUES('Audi','A4')"
-rescue SQLite3::Exception => e 
-
-	puts "Exception occurred"
-	puts e
-
-ensure
-	db.close if db
+def index
+	@users = User.all
+	respond_to do |format|
+		format.json { render :json => @users }
 end
 def register
 	username = params[:username]
 	password = params[:password]
-	@user = User.new(params[user_params])
+	@user = User.new
+	@user.username = username
+
 	@user.save
 
 	# db = SQLite3::Database.open "user.db"
