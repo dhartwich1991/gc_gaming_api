@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-
-
+gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
+gem 'rb-readline'
 gem 'rails', '4.1.8'
 
 gem 'rails-api'

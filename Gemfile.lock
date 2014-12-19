@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/activerecord-hackery/polyamorous.git
+  revision: c54107a5462fc7da39e2231af9ec5f7f610a26b6
+  specs:
+    polyamorous (1.1.0)
+      activerecord (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -60,6 +67,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
+    rb-readline (0.5.1)
     spring (1.2.0)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -81,7 +89,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  polyamorous!
   rails (= 4.1.8)
   rails-api
+  rb-readline
   spring
   sqlite3

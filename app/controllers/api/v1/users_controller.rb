@@ -5,6 +5,7 @@ module Api
 				@users = User.all
 				respond_to do |format|
 					format.json { render :json => @users }
+				end
 			end
 			def register
 				username = params[:username]
@@ -18,7 +19,6 @@ module Api
 			def list_friends
 
 			end
-
 		end
 	end
 end
