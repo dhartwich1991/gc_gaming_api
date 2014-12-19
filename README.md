@@ -53,6 +53,29 @@ Below a list of calls is listed in order to document the API
 </table>
 (In the future this call will return a token if the login was succesful, this token will be needed for every call that goes further than the Login call)
 
+### List all Raids
+<pre><code>(GET) http://dotards.net:3000/api/v1/raids
+</code></pre> 
+JSON RESPONSE
+<table>
+  <tr>
+    <td>Parameter</td>
+    <td>Description</td>
+    <td>Example value</td>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td>id of the raid</td>
+    <td>1</td>
+  </tr>
+    <tr>
+    <td>name</td>
+    <td>title of the raid</td>
+    <td>Highmaul HC 6/7</td>
+  </tr>
+  
+</table>
+
 ### Create a new Raid
 <pre><code>(POST) http://dotards.net:3000/api/v1/raids/create
 </code></pre> 
