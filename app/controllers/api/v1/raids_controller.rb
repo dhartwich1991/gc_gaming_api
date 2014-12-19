@@ -22,8 +22,8 @@ module Api
 				@raid.raidlead = raidlead
 				time = Time.now
 				time.to_formatted_s(:rfc822)        # => "Thu, 18 Jan 2007 06:10:17 -0600"
-				@raid.startdate = time
-				@raid.enddate = time
+				@raid.startdate = startdate
+				@raid.enddate = enddate
 
 				if @raid.save!
 					render json: {status: 'success', code: 0, message: 'Raid has been created'}
