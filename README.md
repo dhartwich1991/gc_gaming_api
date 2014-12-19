@@ -52,5 +52,30 @@ Below a list of calls is listed in order to document the API
   </tr>
 </table>
 
+###Possible Response Codes
+These Codes are stored in the 'code' variable of the returned JSON in POST Requests
+<table>
+  <tr>
+    <td>Code</td>
+    <td>Description</td>
+    <td>Example</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>Successful Event</td>
+    <td>User was created succesfully</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Nil Error Event</td>
+    <td>Requested User doesn't exist</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Wrong Data Error</td>
+    <td>Wrong password was entered</td>
+  </tr>
+</table>
+
 
 
