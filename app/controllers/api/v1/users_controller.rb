@@ -16,7 +16,7 @@ module Api
 
 				@new_user.username = username
 				#Encode Password with Base64
-				encodedpw = Base64::encode(password)
+				encodedpw = Base64::encode64(password)
 				@new_user.password = encodedpw
 				@new_user.email = email
 
