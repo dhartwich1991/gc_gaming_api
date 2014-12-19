@@ -73,6 +73,26 @@ JSON RESPONSE
     <td>title of the raid</td>
     <td>Highmaul HC 6/7</td>
   </tr>
+    <tr>
+    <td>description</td>
+    <td>This is the description of the raid</td>
+    <td>This is our second try on Highmaul, please come with flasks, bufffood and knowledge about the bosses...Raid is supposed to start at 19:00</td>
+  </tr>
+      <tr>
+    <td>raidlead</td>
+    <td>The guys who lead the raid</td>
+    <td>Dreendor, Yakir</td>
+  </tr>
+    <tr>
+    <td>startdate</td>
+    <td>The startdate of when the raid is supposed to start</td>
+    <td>2014-12-26T19:00:00.000Z</td>
+  </tr>
+      <tr>
+    <td>enddate</td>
+    <td>The enddate of when the raid is supposed to end</td>
+    <td>2014-12-26T23:00:00.000Z</td>
+  </tr>
   
 </table>
 
