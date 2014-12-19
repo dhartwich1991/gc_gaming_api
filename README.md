@@ -1,4 +1,4 @@
-gCGaming API
+gC Gaming API
 =============
 
 This is the official API of the gCGaming Raiding Guild on Frostwolf - EU
@@ -52,6 +52,32 @@ Below a list of calls is listed in order to document the API
   </tr>
 </table>
 (In the future this call will return a token if the login was succesful, this token will be needed for every call that goes further than the Login call)
+
+### Create a new Raid
+<pre><code>(POST) http://dotards.net:3000/api/v1/raids/create
+</code></pre> 
+<table>
+  <tr>
+    <td>Parameter</td>
+    <td>Description</td>
+    <td>Example</td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>The title of the Raid</td>
+    <td>Highmaul HC 6/7</td>
+  </tr>
+  <tr>
+    <td>description</td>
+    <td>A short description of the raid explaining goals etc.</td>
+    <td>This is our second try on Highmaul, please come with flasks, bufffood and knowledge about the bosses...Raid is supposed to start at 19:00</td>
+  </tr>
+    <tr>
+    <td>raidlead</td>
+    <td>The user(s) who will do the raidlead for this raid</td>
+    <td>Dreendor, Pace</td>
+  </tr>
+</table>
 
 ###Possible Response Codes
 These Codes are stored in the 'code' variable of the returned JSON in POST Requests
