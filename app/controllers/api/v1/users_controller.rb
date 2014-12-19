@@ -20,7 +20,11 @@ module Api
 				@new_user.password = encodedpw
 				@new_user.email = email
 
-				@new_user.save!
+				if @new_user.save!
+					render json: {message: 'success'}
+				else
+					render json: {message: 'error'}
+				end
 			end
 			def login
 				username = params[:username]
