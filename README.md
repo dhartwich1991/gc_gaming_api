@@ -77,6 +77,17 @@ Below a list of calls is listed in order to document the API
     <td>The user(s) who will do the raidlead for this raid</td>
     <td>Dreendor, Pace</td>
   </tr>
+      <tr>
+    <td>startdate</td>
+    <td>The date when the raid will start</td>
+    <td>26.12.2014 19:00</td>
+  </tr>
+      <tr>
+    <td>enddate</td>
+    <td>The date when the raid will end</td>
+    <td>26.12.2014 23:00</td>
+  </tr>
+  
 </table>
 
 ###Possible Response Codes
