@@ -21,14 +21,26 @@ module Api
 				@new_user.email = email
 
 				if @new_user.save!
-					render json: {message: 'success'}
+					render json: {message: 'success', code: '0'}
 				else
-					render json: {message: 'error'}
+					render json: {message: 'error', code: '1'}
 				end
 			end
 			def login
 				username = params[:username]
 				password = params[:password]
+
+				@loginUser = User.find_by username: username
+				if @loginUser.nil?
+					render json: {message: 'error'}
+				else
+					if password == @loginUser.password
+						render json: {message: 'success', code: '0'}
+					else
+						render json: {message: 'error', code: '2'}
+					end
+				end
+
 			end
 			def list_friends
 
