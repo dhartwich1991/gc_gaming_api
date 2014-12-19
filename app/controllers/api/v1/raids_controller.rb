@@ -6,6 +6,7 @@ module Api
 				@raids = Raid.all
 				respond_to do |format|
 					format.json { render :json => @raids }
+				end
 			end
 		end
 	end
