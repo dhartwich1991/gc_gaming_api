@@ -35,6 +35,8 @@ module Api
 					render json: {message: 'error'}
 				else
 					encodedepassword = Base64::encode64(password)
+					puts encodedepassword
+					puts @loginUser.password
 					if encodedepassword == @loginUser.password
 						render json: {message: 'success', code: '0'}
 					else
