@@ -31,5 +31,26 @@ Below a list of calls is listed in order to document the API
   </tr>
 </table>
 
+### Login a User
+<pre><code>(POST) http://dotards.net:3000/api/v1/users/login
+</code></pre> 
+<table>
+  <tr>
+    <td>Parameter</td>
+    <td>Description</td>
+    <td>Example</td>
+  </tr>
+    <tr>
+    <td>username</td>
+    <td>Username of the user logging in</td>
+    <td>Testuser</td>
+  </tr>
+    <tr>
+    <td>password</td>
+    <td>Password of the user logging in</td>
+    <td>Testpassword</td>
+  </tr>
+</table>
+
 
 
