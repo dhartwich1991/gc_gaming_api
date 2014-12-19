@@ -21,9 +21,9 @@ module Api
 				@new_user.email = email
 
 				if @new_user.save!
-					render json: {message: 'success', code: '0'}
+					render json: {status: 'success', code: 0, message: 'User has been saved'}
 				else
-					render json: {message: 'error', code: '1'}
+					render json: {status: 'error', code: 1, message: 'Failed to save user'}
 				end
 			end
 			def login
@@ -32,15 +32,13 @@ module Api
 
 				@loginUser = User.find_by username: username
 				if @loginUser.nil?
-					render json: {message: 'error'}
+					render json: {status: 'error', code: 1, message: 'requested user was nil'}
 				else
 					encodedepassword = Base64::encode64(password)
-					puts encodedepassword
-					puts @loginUser.password
 					if encodedepassword == @loginUser.password
-						render json: {message: 'success', code: '0'}
+						render json: {status: 'success', code: 0, message: 'user logged in'}
 					else
-						render json: {message: 'error', code: '2'}
+						render json: {status: 'error', code: 2, message: 'wrong password'}
 					end
 				end
 
