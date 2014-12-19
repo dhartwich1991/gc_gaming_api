@@ -51,6 +51,7 @@ Below a list of calls is listed in order to document the API
     <td>Testpassword</td>
   </tr>
 </table>
+(In the future this call will return a token if the login was succesful, this token will be needed for every call that goes further than the Login call)
 
 ###Possible Response Codes
 These Codes are stored in the 'code' variable of the returned JSON in POST Requests
