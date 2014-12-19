@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
 	 namespace :api, :defaults => {:format => :json} do
     namespace :v1 do
+      
 	    resources :users do
         collection do
           post 'register'
           post 'login'
         end
       end
-      resources :raids
+
+      resources :raids do
+        collection do
+          post 'create'
+        end
+      end
+
 	  end
 	 end
 	end
