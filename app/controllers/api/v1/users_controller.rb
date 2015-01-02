@@ -40,6 +40,7 @@ module Api
 						if @loginUser.access_token.nil?
 							@access_token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
 							@loginUser.access_token = @access_token
+							@loginUser.save
 						end
 						
 						render json: {status: 'success', code: 0, message: 'user logged in'}
