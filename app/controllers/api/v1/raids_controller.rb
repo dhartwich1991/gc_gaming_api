@@ -31,6 +31,17 @@ module Api
 				else
 					render json: {status: 'error', code: 1, message: 'Failed to save the raid'}
 				end
+			end
+			def details
+				#The Raid to be listed 
+				@raid = Raid.find(params[:id])
+
+				#Gather all users that are already signed up for this raid
+				@raider_ids = Users_raids.find_all_by raid_id: @raid.id
+
+				#Now get the Usernames of all players from above
+				@players = User.find_all_by_id :@raider_ids
+
 			end 
 		end
 	end

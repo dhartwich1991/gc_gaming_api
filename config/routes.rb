@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :raids do
         collection do
           post 'create'
+          get 'details'
         end
       end
 
