@@ -36,7 +36,12 @@ module Api
 				else
 					encodedepassword = Base64::encode64(password)
 					if encodedepassword == @loginUser.password
-						puts SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
+						#If user doesn't have an access token yet we need to generate one and set it
+						if @loginUser.access_token == null
+							@access_token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
+							@loginUser.access_token = @access_token
+						end
+						
 						render json: {status: 'success', code: 0, message: 'user logged in'}
 					else
 						render json: {status: 'error', code: 2, message: 'wrong password'}
