@@ -43,11 +43,14 @@ module Api
 							@loginUser.save
 						end
 						
-						render json: {status: 'success', code: 0, message: 'user logged in'}
+						render json: {status: 'success', code: 0, message: 'user logged in', access_token: @loginUser.access_token}
 					else
 						render json: {status: 'error', code: 2, message: 'wrong password'}
 					end
 				end
+
+			end
+			def logout
 
 			end
 			def list_friends
