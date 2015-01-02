@@ -43,7 +43,7 @@ module Api
 							@loginUser.save
 						end
 						
-						render json: {status: 'success', code: 0, message: 'user logged in', access_token: @loginUser.access_token}
+						render json: {status: 'success', code: 0, message: 'user logged in', user: @loginUser}
 					else
 						render json: {status: 'error', code: 2, message: 'wrong password'}
 					end
