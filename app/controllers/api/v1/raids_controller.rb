@@ -4,6 +4,7 @@ module Api
 			def index
 				#This is the default call and should list all raids.
 				@raids = Raid.all
+				@raids = @raids.sort_by &:startdate
 				respond_to do |format|
 					format.json { render :json => @raids }
 				end
