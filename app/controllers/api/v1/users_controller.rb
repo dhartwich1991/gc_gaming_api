@@ -36,6 +36,7 @@ module Api
 				else
 					encodedepassword = Base64::encode64(password)
 					if encodedepassword == @loginUser.password
+						puts SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
 						render json: {status: 'success', code: 0, message: 'user logged in'}
 					else
 						render json: {status: 'error', code: 2, message: 'wrong password'}
