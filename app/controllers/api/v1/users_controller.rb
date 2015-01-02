@@ -37,7 +37,7 @@ module Api
 					encodedepassword = Base64::encode64(password)
 					if encodedepassword == @loginUser.password
 						#If user doesn't have an access token yet we need to generate one and set it
-						if @loginUser.access_token == null
+						if @loginUser.access_token.nil?
 							@access_token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
 							@loginUser.access_token = @access_token
 						end
