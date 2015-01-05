@@ -68,7 +68,11 @@ module Api
 			end
 			def sign_off
 				@signoffRaid = UsersRaids.where(raid_id: params[:id], user_id: params[:userid])
-				@signoffRaid.delete				
+				if @signoffRaid.destroy_all
+					render json: {status: 'success', code: 0, message: 'Signed off the raid'}
+				else
+					render json: {status: 'error', code: 1, message: 'Failed to resign from raid'}
+				end			
 			end 
 		end
 	end
