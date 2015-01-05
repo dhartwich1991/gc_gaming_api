@@ -37,10 +37,12 @@ module Api
 				@raid = Raid.find(params[:id])
 
 				#Gather all users that are already signed up for this raid
-				@raider_ids = UsersRaids.where(raid_id: @raid.id)
-
+				#@raider_ids = UsersRaids.find(:conditions => ["raid_id = ?", @raid.id])
+				@raider_ids = UsersRaids.where(raid_id: @raid.id).pluck(:user_id)
 				#Now get the Usernames of all players from above
-				@players = User.find_all_by_id :@raider_ids
+				puts @raider_ids
+				@players = User.find(@raider_ids)
+				render json: {raid: @raid, members: @players}
 
 			end 
 		end
