@@ -13,6 +13,8 @@ Rails.application.routes.draw do
         collection do
           post 'create'
           get 'details'
+          post 'sign_up'
+          post 'sign_off'
         end
       end
 

@@ -44,6 +44,21 @@ module Api
 				@players = User.find(@raider_ids)
 				render json: {raid: @raid, members: @players}
 
+			end
+			def sign_up
+				@signupRaid = UsersRaids.new
+
+				@signupRaid.user_id = params[:id]
+				@signupRaid.raid_id = params[:userid]
+
+				if @signupRaid.save!
+					render json: {status: 'success', code: 0, message: 'Signed up for the Raid'}
+				else
+					render json: {status: 'error', code: 1, message: 'Failed to sign up for the Raid'}
+				end
+			end
+			def sign_off
+
 			end 
 		end
 	end
