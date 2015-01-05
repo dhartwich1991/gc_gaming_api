@@ -55,12 +55,10 @@ module Api
 				end
 			end
 			def sign_up
-				@signupRaid = UsersRaids.new
-					
-				userid = params[:userid]				
+				@signupRaid = UsersRaids.new			
 
 				@signupRaid.raid_id = params[:id]
-				@signupRaid.user_id = userid
+				@signupRaid.user_id = params[:userid]
 
 				if @signupRaid.save!
 					render json: {status: 'success', code: 0, message: 'Signed up for the Raid'}
@@ -69,7 +67,8 @@ module Api
 				end
 			end
 			def sign_off
-
+				@signoffRaid = UsersRaids.where(raid_id: params[:id], user_id: params[:userid])
+				@signoffRaid.delete				
 			end 
 		end
 	end
