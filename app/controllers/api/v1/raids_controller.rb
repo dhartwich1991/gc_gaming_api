@@ -47,9 +47,11 @@ module Api
 			end
 			def sign_up
 				@signupRaid = UsersRaids.new
+					
+				userid = params[:userid]				
 
-				@signupRaid.user_id = params[:id]
-				@signupRaid.raid_id = params[:userid]
+				@signupRaid.raid_id = params[:id]
+				@signupRaid.user_id = userid
 
 				if @signupRaid.save!
 					render json: {status: 'success', code: 0, message: 'Signed up for the Raid'}
