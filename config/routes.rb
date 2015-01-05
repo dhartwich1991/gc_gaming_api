@@ -15,6 +15,7 @@ Rails.application.routes.draw do
           get 'details'
           post 'sign_up'
           post 'sign_off'
+          post 'signedup'
         end
       end
 

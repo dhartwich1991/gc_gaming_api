@@ -45,6 +45,14 @@ module Api
 				render json: {raid: @raid, members: @players}
 
 			end
+			def signedup
+				@signedup = UsersRaids.where(raid_id: params[id], user_id: params[userid])
+				if @signedup.nil?
+					render json: {signedup: false}
+				else
+					render json: {signedup: true}
+				end
+			end
 			def sign_up
 				@signupRaid = UsersRaids.new
 					
