@@ -37,7 +37,7 @@ module Api
 				@raid = Raid.find(params[:id])
 
 				#Gather all users that are already signed up for this raid
-				@raider_ids = Users_raids.where(raid_id: @raid_id)
+				@raider_ids = UsersRaids.where(raid_id: @raid.id)
 
 				#Now get the Usernames of all players from above
 				@players = User.find_all_by_id :@raider_ids
