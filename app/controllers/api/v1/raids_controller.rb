@@ -46,11 +46,12 @@ module Api
 
 			end
 			def signedup
-				@signedup = UsersRaids.where(raid_id: params[id], user_id: params[userid])
-				if @signedup.nil?
-					render json: {signedup: false}
-				else
+				@signedup = UsersRaids.where(raid_id: params[:id], user_id: params[:userid])
+			
+				if @signedup.any?
 					render json: {signedup: true}
+				else
+					render json: {signedup: false}
 				end
 			end
 			def sign_up
