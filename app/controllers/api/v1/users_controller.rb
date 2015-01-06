@@ -50,6 +50,11 @@ module Api
 				end
 
 			end
+			def make_moderator
+				@usermod = User.find(params[:id])
+				@usermod.moderator = true
+				@usermod.save
+			end
 			def logout
 
 			end

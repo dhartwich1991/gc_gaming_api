@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         collection do
           post 'register'
           post 'login'
+	  get 'make_moderator'
         end
       end
 
