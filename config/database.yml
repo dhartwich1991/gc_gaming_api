@@ -8,6 +8,7 @@ default: &default
   adapter: sqlite3
   pool: 5
   timeout: 5000
+  encoding: UTF8
 
 development:
   <<: *default
@@ -16,6 +17,10 @@ development:
 alpha:
   <<: *default
   database: db/alpha.sqlite3
+
+beta:
+  <<: *default
+  database: db/beta.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
