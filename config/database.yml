@@ -13,7 +13,7 @@ development:
   <<: *default
   database: db/development.sqlite3
 
-  production:
+alpha:
   <<: *default
   database: db/alpha.sqlite3
 
