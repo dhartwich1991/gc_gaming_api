@@ -9,6 +9,7 @@ module Api
 			end
 			def create
 				@newchar = Character.new
+
 				@newchar.lastModified = params[:lastModified]
 				@newchar.name = params[:name]
 				@newchar.realm = params[:realm]
@@ -22,6 +23,9 @@ module Api
 				@newchar.itemleveltotal = params[:itemleveltotal]
 				@newchar.itemlevelequipped = params[:itemlevelequipped]
 				@newchar.userid = params[:userid]
+
+				puts newchar
+
 				if @newchar.save!
 					render json: {status: 'success', code: 0, message: 'Character has been saved'}
 				else
