@@ -10,21 +10,35 @@ module Api
 			def create
 				@newchar = Character.new
 
-				@newchar.lastModified = params[:lastModified].to_i
-				@newchar.name = params[:name]
-				@newchar.realm = params[:realm]
-				@newchar.battlegroup = params[:battlegroup]
-				@newchar.class = params[:class].to_i
-				@newchar.race = params[:race].to_i
-				@newchar.gender = params[:gender].to_i
-				@newchar.level = params[:level].to_i
-				@newchar.achievementPoints = params[:achievementPoints].to_i
-				@newchar.thumbnailurl = params[:thumbnailurl]
-				@newchar.itemleveltotal = params[:itemleveltotal].to_i
-				@newchar.itemlevelequipped = params[:itemlevelequipped].to_i
-				@newchar.userid = params[:userid].to_i
+				lastmod = params[:lastModified]
+				charname = params[:name]
+				realm = params[:realm]
+				battlegroup = params[:battlegroup]
+				charclass = params[:class]
+				race = params[:race]
+				gender = params[:gender]
+				level = params[:level]
+				achievement_points = params[:achievementPoints]
+				thumbnailurl = params[:thumbnailurl]
+				itemlvltotal = params[:itemleveltotal]
+				itemlvlequipped = params[:itemlevelequipped]
+				userid = params[:userid]
 
-				puts newchar
+				@newchar.lastModified = lastmod
+				@newchar.name = charname
+				@newchar.realm = realm
+				@newchar.battlegroup = battlegroup
+				@newchar.class = charclass
+				@newchar.race = race
+				@newchar.gender = gender
+				@newchar.level = level
+				@newchar.achievementPoints = achievement_points
+				@newchar.thumbnailurl = thumbnailurl
+				@newchar.itemleveltotal = itemlvltotal
+				@newchar.itemlevelequipped = itemlvlequipped
+				@newchar.userid = userid
+
+				puts @newchar
 
 				if @newchar.save!
 					render json: {status: 'success', code: 0, message: 'Character has been saved'}
