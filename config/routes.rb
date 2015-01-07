@@ -20,6 +20,14 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :characters do
+        collection do
+          get 'mychars'
+          post 'create'
+          post 'update'
+        end
+      end
+
 	  end
 	 end
 	end
