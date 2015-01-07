@@ -3,7 +3,7 @@ module Api
 		class RaidsController < ApplicationController
 			def index
 				#This is the default call and should list all raids.
-				@raids = Raid.where("startdate > ?", Time.now)
+				@raids = Raid.where("startdate > ?", 2.weeks.ago)
 				@raids = @raids.order("startdate DESC")
 				respond_to do |format|
 					format.json { render :json => @raids }
