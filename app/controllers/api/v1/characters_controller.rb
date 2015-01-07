@@ -20,8 +20,8 @@ module Api
 				@newchar.achievementPoints = params[:achievementPoints]
 				@newchar.thumbnailurl = params[:thumbnailurl]
 				@newchar.itemleveltotal = params[:itemleveltotal]
-				@newchar.itemlevelequipped = params [:itemlevelequipped]
-				@newchar.userid = params [:userid]
+				@newchar.itemlevelequipped = params[:itemlevelequipped]
+				@newchar.userid = params[:userid]
 				if @newchar.save!
 					render json: {status: 'success', code: 0, message: 'Character has been saved'}
 				else
@@ -32,7 +32,7 @@ module Api
 			end
 			def mychars
 				@chars = Character.where(userid: params[:userid])
-				render json {characters: @chars}
+				render json: {characters: @chars}
 			end
 		end
 	end
