@@ -16,6 +16,14 @@ module Api
 				startdate = params[:startdate]
 				enddate = params[:enddate]
 
+				puts description
+
+				name.force_encoding("ISO-8859-1").encode("UTF-8")
+				description.force_encoding("ISO-8859-1").encode("UTF-8")
+				raidlead.force_encoding("ISO-8859-1").encode("UTF-8")
+
+				puts description
+
 				@raid = Raid.new
 
 				@raid.name = name
