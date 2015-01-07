@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102155751) do
+ActiveRecord::Schema.define(version: 20150107083340) do
+
+  create_table "characters", force: true do |t|
+    t.integer  "lastModified"
+    t.string   "name"
+    t.string   "realm"
+    t.string   "battlegroup"
+    t.integer  "class"
+    t.integer  "race"
+    t.integer  "gender"
+    t.integer  "level"
+    t.integer  "achievementPoints"
+    t.string   "thumbnailurl"
+    t.integer  "itemleveltotal"
+    t.integer  "itemlevelequipped"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "userid"
+  end
 
   create_table "raids", force: true do |t|
     t.string   "name"

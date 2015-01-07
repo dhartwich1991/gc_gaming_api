@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lastModified: 1
+  name: MyString
+  realm: MyString
+  battlegroup: MyString
+  class: 1
+  race: 1
+  gender: 1
+  level: 1
+  achievementPoints: 1
+  thumbnailurl: MyString
+  itemleveltotal: 1
+  itemlevelequipped: 1
+
+two:
+  lastModified: 1
+  name: MyString
+  realm: MyString
+  battlegroup: MyString
+  class: 1
+  race: 1
+  gender: 1
+  level: 1
+  achievementPoints: 1
+  thumbnailurl: MyString
+  itemleveltotal: 1
+  itemlevelequipped: 1
