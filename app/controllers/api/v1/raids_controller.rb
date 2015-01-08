@@ -52,14 +52,13 @@ module Api
 				#Now get the Usernames of all players from above
 				puts @raider_ids
 				@players = User.find(@raider_ids)
-				@chars = Character.find(@character_ids)
 				
 				#SELECT users.*, characters.name,characters.realm, users_raids.role FROM users, characters, users_raids
 				#   ...> WHERE users_raids.raid_id = 1
 				#      ...> AND users_raids.characterid = characters.id
 				#         ...> AND users.id = characters.user_id;
 
-				render json: {raid: @raid, members: @players, characters: @chars, relation: @relation}
+				render json: {raid: @raid, members: @players}
 			end
 			def signedup
 				@signedup = UsersRaids.where(raid_id: params[:id], user_id: params[:userid])
