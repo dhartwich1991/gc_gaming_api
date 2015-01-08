@@ -22,7 +22,7 @@ module Api
 				thumbnailurl = params[:thumbnailurl]
 				itemlvltotal = params[:itemleveltotal]
 				itemlvlequipped = params[:itemlevelequipped]
-				userid = params[:userid]
+				user_id = params[:userid]
 
 				@newchar.lastModified = lastmod
 				@newchar.name = charname
@@ -36,7 +36,7 @@ module Api
 				@newchar.thumbnailurl = thumbnailurl
 				@newchar.itemleveltotal = itemlvltotal
 				@newchar.itemlevelequipped = itemlvlequipped
-				@newchar.user_id = userid
+				@newchar.user_id = user_id
 
 				if @newchar.save!
 					render json: {status: 'success', code: 0, message: 'Character has been saved'}
