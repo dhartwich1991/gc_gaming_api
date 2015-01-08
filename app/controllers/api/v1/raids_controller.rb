@@ -47,11 +47,19 @@ module Api
 				#Gather all users that are already signed up for this raid
 				#@raider_ids = UsersRaids.find(:conditions => ["raid_id = ?", @raid.id])
 				@raider_ids = UsersRaids.where(raid_id: @raid.id).pluck(:user_id)
+				@character_ids = UsersRaids.where(raid_id: @raid.id).pluck(:characterid)
+				@relation = UsersRaids.where(raid_id: @raid.id)
 				#Now get the Usernames of all players from above
 				puts @raider_ids
 				@players = User.find(@raider_ids)
-				render json: {raid: @raid, members: @players}
+				@chars = Character.find(@character_ids)
+				
+				#SELECT users.*, characters.name,characters.realm, users_raids.role FROM users, characters, users_raids
+				#   ...> WHERE users_raids.raid_id = 1
+				#      ...> AND users_raids.characterid = characters.id
+				#         ...> AND users.id = characters.user_id;
 
+				render json: {raid: @raid, members: @players, characters: @chars, relation: @relation}
 			end
 			def signedup
 				@signedup = UsersRaids.where(raid_id: params[:id], user_id: params[:userid])
@@ -67,6 +75,8 @@ module Api
 
 				@signupRaid.raid_id = params[:id]
 				@signupRaid.user_id = params[:userid]
+				@signupRaid.characterid = params[:characterid]
+				@signupRaid.role = params[:role]
 
 				if @signupRaid.save!
 					render json: {status: 'success', code: 0, message: 'Signed up for the Raid'}

@@ -14,7 +14,7 @@ module Api
 				charname = params[:name]
 				realm = params[:realm]
 				battlegroup = params[:battlegroup]
-				charclass = params[:class]
+				character_class = params[:class]
 				race = params[:race]
 				gender = params[:gender]
 				level = params[:level]
@@ -28,7 +28,7 @@ module Api
 				@newchar.name = charname
 				@newchar.realm = realm
 				@newchar.battlegroup = battlegroup
-				@newchar.class = charclass
+				@newchar.character_class = character_class
 				@newchar.race = race
 				@newchar.gender = gender
 				@newchar.level = level
@@ -36,9 +36,7 @@ module Api
 				@newchar.thumbnailurl = thumbnailurl
 				@newchar.itemleveltotal = itemlvltotal
 				@newchar.itemlevelequipped = itemlvlequipped
-				@newchar.userid = userid
-
-				puts @newchar
+				@newchar.user_id = userid
 
 				if @newchar.save!
 					render json: {status: 'success', code: 0, message: 'Character has been saved'}
@@ -49,7 +47,7 @@ module Api
 			def update 
 			end
 			def mychars
-				@chars = Character.where(userid: params[:userid])
+				@chars = Character.where(user_id: params[:userid])
 				render json: {characters: @chars}
 			end
 		end
