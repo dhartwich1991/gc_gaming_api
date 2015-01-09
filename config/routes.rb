@@ -7,6 +7,7 @@ Rails.application.routes.draw do
           post 'register'
           post 'login'
           get 'make_moderator'
+	  post 'save_gcm_regid'
         end
       end
 

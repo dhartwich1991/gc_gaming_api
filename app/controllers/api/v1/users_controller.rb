@@ -61,6 +61,16 @@ module Api
 			def list_friends
 
 			end
+			def save_gcm_regid
+				@reguser = User.find(params[:id])
+				gcm_regid = params[:gcm_id])
+				@reguser.gcm_reg_id = gcm_regid
+				if @reguser.save!
+					render json: {status: 'success', code: 0, message: 'User has been saved'}
+                                else
+                                        render json: {status: 'error', code: 1, message: 'Failed to save user'}
+                                end
+			end
 		end
 	end
 end
