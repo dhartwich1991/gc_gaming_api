@@ -36,6 +36,7 @@ module Api
 
 				if @raid.save!
 					render json: {status: 'success', code: 0, message: 'Raid has been created'}
+					gcm = GCM.new("AIzaSyBz0l7J2au9Or0JXTqzbwLRRKxn3wnAtIg")
 				else
 					render json: {status: 'error', code: 1, message: 'Failed to save the raid'}
 				end
@@ -47,11 +48,6 @@ module Api
 				#Gather all users that are already signed up for this raid
 				@raiders = User.joins(:characters).select("users.id, users.username, characters.character_class as character_class, characters.id AS charid, characters.name AS charname, characters.race as race, characters.realm as realm,characters.itemlevelequipped as itemlvlequipped, characters.itemleveltotal as itemlvltotal, characters.thumbnailurl as thumbnail, characters.level AS level, users_raids.role").from("users_raids, users").where("users_raids.raid_id = ? AND users_raids.characterid = characters.id", @raid.id)
 				
-				#SELECT users.*, characters.name,characters.realm, users_raids.role FROM users, characters, users_raids
-				#   ...> WHERE users_raids.raid_id = 1
-				#      ...> AND users_raids.characterid = characters.id
-				#         ...> AND users.id = characters.user_id;
-
 				render json: {raid: @raid, members: @raiders}
 			end
 			def signedup
