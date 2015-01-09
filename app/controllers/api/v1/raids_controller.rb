@@ -45,22 +45,14 @@ module Api
 				@raid = Raid.find(params[:id])
 
 				#Gather all users that are already signed up for this raid
-				#@raider_ids = UsersRaids.find(:conditions => ["raid_id = ?", @raid.id])
-				@raider_ids = UsersRaids.where(raid_id: @raid.id).pluck(:user_id)
-				@character_ids = UsersRaids.where(raid_id: @raid.id).pluck(:characterid)
-				@relation = UsersRaids.where(raid_id: @raid.id)
-				@test = User.joins(:characters).select("users.*, characters.name AS charname, characters.realm as realm, characters.level AS level, users_raids.role").from("users_raids, users").where("users_raids.raid_id = ? AND users_raids.characterid = characters.id", 1)
-				User.joins(:characters).select("users.*, characters.name AS charname, characters.realm as realm, characters.level AS level, users_raids.role").from("users_raids, users").where("users_raids.raid_id = @raid.id AND users_raids.characterid = characters.id")
-				#Now get the Usernames of all players from above
-				puts @raider_ids
-				@players = User.find(@raider_ids)
+				@raiders = User.joins(:characters).select("users.id, users.username, characters.character_class as character_class, characters.id AS charid, characters.name AS charname, characters.race as race, characters.realm as realm,characters.itemlevelequipped as itemlvlequipped, characters.itemleveltotal as itemlvltotal, characters.thumbnailurl as thumbnail, characters.level AS level, users_raids.role").from("users_raids, users").where("users_raids.raid_id = ? AND users_raids.characterid = characters.id", @raid.id)
 				
 				#SELECT users.*, characters.name,characters.realm, users_raids.role FROM users, characters, users_raids
 				#   ...> WHERE users_raids.raid_id = 1
 				#      ...> AND users_raids.characterid = characters.id
 				#         ...> AND users.id = characters.user_id;
 
-				render json: {raid: @raid, members: @players, try: @test}
+				render json: {raid: @raid, members: @raiders}
 			end
 			def signedup
 				@signedup = UsersRaids.where(raid_id: params[:id], user_id: params[:userid])

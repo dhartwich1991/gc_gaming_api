@@ -37,7 +37,13 @@ GEM
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     erubis (2.7.0)
+    gcm (0.0.9)
+      httparty
+      json
     hike (1.2.3)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.11)
     json (1.8.1)
     mail (2.6.3)
@@ -45,6 +51,7 @@ GEM
     mime-types (2.4.3)
     minitest (5.4.3)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -89,6 +96,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  gcm
   polyamorous!
   rails (= 4.1.8)
   rails-api
