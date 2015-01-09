@@ -49,6 +49,8 @@ module Api
 				@raider_ids = UsersRaids.where(raid_id: @raid.id).pluck(:user_id)
 				@character_ids = UsersRaids.where(raid_id: @raid.id).pluck(:characterid)
 				@relation = UsersRaids.where(raid_id: @raid.id)
+				@test = User.joins(:characters).select("users.*, characters.name AS charname, characters.realm as realm, characters.level AS level, users_raids.role").from("users_raids, users").where("users_raids.raid_id = ? AND users_raids.characterid = characters.id", 1)
+				User.joins(:characters).select("users.*, characters.name AS charname, characters.realm as realm, characters.level AS level, users_raids.role").from("users_raids, users").where("users_raids.raid_id = @raid.id AND users_raids.characterid = characters.id")
 				#Now get the Usernames of all players from above
 				puts @raider_ids
 				@players = User.find(@raider_ids)
@@ -58,7 +60,7 @@ module Api
 				#      ...> AND users_raids.characterid = characters.id
 				#         ...> AND users.id = characters.user_id;
 
-				render json: {raid: @raid, members: @players}
+				render json: {raid: @raid, members: @players, try: @test}
 			end
 			def signedup
 				@signedup = UsersRaids.where(raid_id: params[:id], user_id: params[:userid])
