@@ -63,7 +63,7 @@ module Api
 			end
 			def save_gcm_regid
 				@reguser = User.find(params[:id])
-				gcm_regid = params[:gcm_id])
+				gcm_regid = params[:gcm_id]
 				@reguser.gcm_reg_id = gcm_regid
 				if @reguser.save!
 					render json: {status: 'success', code: 0, message: 'User has been saved'}

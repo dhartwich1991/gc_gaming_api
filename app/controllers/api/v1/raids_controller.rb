@@ -36,7 +36,10 @@ module Api
 
 				if @raid.save!
 					render json: {status: 'success', code: 0, message: 'Raid has been created'}
-					gcm = GCM.new("AIzaSyBz0l7J2au9Or0JXTqzbwLRRKxn3wnAtIg")
+					gcm = ::GCM.new("AIzaSyBz0l7J2au9Or0JXTqzbwLRRKxn3wnAtIg")
+					registration_ids = User.all.select("users.gcm_reg_id").pluck(:gcm_reg_id)
+					options = {data: {code: 1, event: "New raid was created", name: @raid.name, description: @raid.description}}
+					response = gcm.send(registration_ids, options)
 				else
 					render json: {status: 'error', code: 1, message: 'Failed to save the raid'}
 				end

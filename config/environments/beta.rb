@@ -1,5 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+#Require GCM PUSH gem
+require 'gcm'
 
   #USE UTF 8 ENCODING EVERYWHERE
   config.encoding = "utf-8"
