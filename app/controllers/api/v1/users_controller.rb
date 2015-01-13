@@ -7,6 +7,10 @@ module Api
 					format.json { render :json => @users }
 				end
 			end
+			def show
+				@user = User.find(params[:id])
+				render json: @user
+			end
 			def register
 				username = params[:username]
 				password = params[:password]
